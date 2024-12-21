@@ -1,6 +1,7 @@
 // src/pages/Services.jsx
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { 
   Brush, 
   Ruler, 
@@ -9,8 +10,9 @@ import {
   Wrench, 
   Paintbrush, 
   ShieldCheck, 
-  Clock, 
-  Shield 
+    Clock,
+  ArrowRight,
+  Shield
 } from 'lucide-react';
 
 const ServicesHeroSection = () => {
@@ -23,7 +25,9 @@ const ServicesHeroSection = () => {
         staggerChildren: 0.3
       }
     }
-  };
+    };
+    
+    const navigate = useNavigate();
 
   const childVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -99,6 +103,15 @@ const ServicesHeroSection = () => {
 };
 
 const ServiceCard = ({ service, index }) => {
+
+    const contactnavigate = useNavigate();
+
+    const navigate = () => {
+        // Convert service title to URL-friendly format
+        const serviceUrl = service.title.toLowerCase().replace(/\s+/g, '-');
+        window.location.href = `/services/${serviceUrl}`;
+      };
+
   // Map service types to appropriate background images
   const getBackgroundImage = (title) => {
     const backgrounds = {
@@ -175,7 +188,14 @@ const ServiceCard = ({ service, index }) => {
               {feature}
             </motion.li>
           ))}
-        </ul>
+              </ul>
+              <button
+          onClick={navigate}
+          className="mt-4 inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg transition-colors duration-300"
+        >
+          Learn More
+          <ArrowRight className="w-4 h-4" />
+        </button>
       </div>
     </motion.div>
   );
@@ -212,7 +232,8 @@ const ProcessStep = ({ step, index }) => {
 };
 
 const Services = () => {
-  const { t } = useTranslation();
+    const { t } = useTranslation();
+    const navigate = useNavigate();
 
   const services = [
     {
@@ -297,7 +318,7 @@ const Services = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
           <p className="mb-8">Contact us today for a free consultation and quote</p>
-          <button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full transition-colors">
+          <button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full transition-colors" onClick={() => navigate("/contact")}>
             Get Free Quote
           </button>
         </div>

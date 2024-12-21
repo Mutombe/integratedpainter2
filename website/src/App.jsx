@@ -6,6 +6,10 @@ import { Layout } from './components/layout.jsx';
 import { LanguageProvider } from './components/context/context.jsx';
 import { useLocation } from 'react-router-dom';
 import { Suspense, lazy, useState, useEffect } from "react";
+import InteriorPainting from './components/services/interiorpainting.jsx';
+import ExteriorPainting from './components/services/exterioorpainting.jsx';
+import CommercialPainting from './components/services/commercial.jsx';
+import ConstructionServices from './components/services/constructions.jsx';
 
 
 // Implementing lazy loading for route components to improve initial load time
@@ -53,6 +57,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/interior-painting" element={<InteriorPainting />} />
+        <Route path="/services/exterior-painting" element={<ExteriorPainting />} />
+        <Route path="/services/commercial-painting" element={<CommercialPainting />} />
+        <Route path="/services/construction-services" element={<ConstructionServices />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />

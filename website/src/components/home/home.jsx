@@ -6,18 +6,23 @@ import {
   Star,
   Building,
   Home as HomeIcon,
-  Factory,
+    Factory,
+  ArrowRight
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PaintBrandsShowcase, PartnersShowcase } from "../paints/paints";
+import PaintedCTA from "../CTA/paintedcta";
 
 
 const ServiceCard = ({ icon, title, description, bgImage }) => {
-  // Default background images for each service type
   const defaultImages = {
     Residential: '/p8.jpg',
     Commercial: '/p7.jpg',
     Industrial: '/p6.jpg'
+  };
+
+  const handleLearnMore = () => {
+    window.location.href = '/services';
   };
 
   return (
@@ -41,14 +46,25 @@ const ServiceCard = ({ icon, title, description, bgImage }) => {
           {icon}
         </div>
         
-        <div className="mt-auto">
-          <h3 className="text-xl font-bold mb-2 text-gray-900">{title}</h3>
-          <p className="text-gray-700">{description}</p>
+        <div className="mt-auto space-y-4">
+          <div>
+            <h3 className="text-xl font-bold mb-2 text-gray-900">{title}</h3>
+            <p className="text-gray-700">{description}</p>
+          </div>
+          
+          <button
+            onClick={handleLearnMore}
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors duration-300"
+          >
+            Learn More
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
         </div>
       </div>
     </motion.div>
   );
 };
+
 
 // Example usage in a parent component
 const ServicesSection = () => {
@@ -156,22 +172,9 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-primary text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Transform Your Space?
-          </h2>
-          <p className="mb-8 max-w-2xl mx-auto">
-            Contact us today for a free consultation and quote.
-          </p>
-          <button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full transition-colors">
-            Get Started
-          </button>
-        </div>
-      </section>
+          </section>
+          
+          <PaintedCTA />
     </>
   );
 };
