@@ -45,14 +45,15 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
-            <img 
+            {/*<img 
               src="/clogo3.png" 
               alt="Integrated Painters" 
               className="h-8 w-auto"
-            />
-            <span className="font-bold text-xl text-primary">
-              Integrated Painters
-            </span>
+            />*/}
+                      <h2 className="font-bold text-xl text-primary">
+                          <strong>
+              Integrated Painters</strong>
+            </h2>
           </Link>
 
           {/* Desktop Menu */}
