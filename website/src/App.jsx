@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
     const preloadImages = [
-      "clogo3.png",
+      "pm.png",
       "/2.jpg",
       "/IP.png",
       "p1.webp",

@@ -1,9 +1,9 @@
 // src/components/Navbar.jsx
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Menu, X, Globe } from 'lucide-react';
-import { useLanguage } from '../context/context';
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "../context/context";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,22 +16,22 @@ export const Navbar = () => {
       setScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Projects", path: "/projects" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'sn', name: 'Shona' },
-    { code: 'nd', name: 'Ndebele' },
+    { code: "en", name: "English" },
+    { code: "sn", name: "Shona" },
+    { code: "nd", name: "Ndebele" },
   ];
 
   return (
@@ -39,21 +39,20 @@ export const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-30 ${
-        scrolled ? 'bg-white shadow-lg' : 'bg-white'
+        scrolled ? "bg-white shadow-lg" : "bg-white"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
-            {/*<img 
-              src="/clogo3.png" 
+            <img 
+              src="/pm.png" 
               alt="Integrated Painters" 
-              className="h-8 w-auto"
-            />*/}
-                      <h2 className="font-bold text-xl text-primary">
-                          <strong>
-              Integrated Painters</strong>
-            </h2>
+              className="h-20 w-auto pt-2 rounded-lg"
+            />
+            {/* Logo <h2 className="font-bold text-xl bg-gradient-to-r from-red-500 via-green-500 to-purple-600 text-transparent bg-clip-text">
+              <strong>Integrated Painters</strong>
+            </h2>*/}
           </Link>
 
           {/* Desktop Menu */}
@@ -64,14 +63,14 @@ export const Navbar = () => {
                 to={item.path}
                 className={`transition-colors duration-20 hover:text-primary ${
                   location.pathname === item.path
-                    ? 'text-primary font-semibold'
-                    : 'text-neutral'
+                    ? "text-primary font-semibold"
+                    : "text-neutral"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-            
+
             {/* Language Selector */}
             <div className="relative group">
               <button className="flex items-center space-x-1">
@@ -93,15 +92,8 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
@@ -109,7 +101,7 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       <motion.div
         initial={false}
-        animate={isOpen ? { height: 'auto' } : { height: 0 }}
+        animate={isOpen ? { height: "auto" } : { height: 0 }}
         className="md:hidden overflow-hidden bg-white"
       >
         <div className="px-4 pt-2 pb-3 space-y-1">
@@ -119,8 +111,8 @@ export const Navbar = () => {
               to={item.path}
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 location.pathname === item.path
-                  ? 'bg-primary text-white'
-                  : 'text-neutral hover:bg-gray-100'
+                  ? "bg-primary text-white"
+                  : "text-neutral hover:bg-gray-100"
               }`}
               onClick={() => setIsOpen(false)}
             >
@@ -139,8 +131,8 @@ export const Navbar = () => {
                   }}
                   className={`text-left flex items-center space-x-1 ${
                     language === lang.code
-                      ? 'text-primary font-semibold'
-                      : 'text-neutral'
+                      ? "text-primary font-semibold"
+                      : "text-neutral"
                   }`}
                 >
                   <Globe className="w-5 h-5 text-primary" />
